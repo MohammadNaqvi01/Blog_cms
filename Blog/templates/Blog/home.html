@@ -1,0 +1,33 @@
+{% extends 'Blog/base.html' %}
+{% load static %}{% load cache %}
+
+
+
+
+
+
+{% block content %}
+
+{% cache time home%}
+<div class="col-sm-10">
+
+  <h3 class="text-danger">
+     Home Page
+  </h3>
+
+  {% for posts in post %}
+     <h6>Written on {{posts.date_created}} by {{posts.created_by}}</h6>
+      <div class="col-md-6">
+        <div class="h-100 p-3 bg-danger border rounded-1 mb-5">
+          <h2 class="font-weight-bold">{{posts.title}}</h2>
+          {{posts.desc}}
+        </div>
+      </div>
+    
+  {% endfor %}
+</div>
+{% endcache time home %}
+
+
+{% endblock content %}
+
